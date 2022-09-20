@@ -87,6 +87,30 @@ You have to create a string separated by commas, these strings are retrieved fro
 
 ### private fun snackBar()
  Show the user an error message when loading the products
+ 
+ ##Detail Activity
+
+### private fun renderItem()
+Bind the item data with the xml
+
+### private fun getItem()
+Receive the object sent in the ItemAdapter
+
+### private fun navigateToHome()
+Clicking on imgBack , returns to the Main Activity
+
+
+### private fun onClickFav()
+When clicking on imgFav , if the ID of the object is not found in a list of strings, it calls the insert() function and paints the heart red, instead if it is found, delete() is called and paints unpaints the heart
+
+### private fun insert()
+Save the values ​​of the object
+
+### private suspend fun saveValues(title: String, price: String, image: String)
+Save the data of the object through the DataStore to be sent to the Favorites Activity
+
+### private suspend fun deleteValues()
+Deletes the values ​​of the object saved in the Data Store
 
 
 
