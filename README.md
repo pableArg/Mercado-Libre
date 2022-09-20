@@ -47,7 +47,7 @@ You have to create a string separated by commas, these strings are retrieved fro
 
 ## Authors
 
-- [pableArg](https://www.github.com/octokatherine)
+- [pableArg](https://www.github.com/pableArg)
 
 
 ## Usage
