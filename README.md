@@ -66,7 +66,7 @@ You have to create a string separated by commas, these strings are retrieved fro
 
 # Features
 
-##Main Activity
+#Main Activity
 
  ### private fun setSearchViewListener()
  Allows you to enter a query for , which will be sent to getCategories of the ItemViewModel
@@ -88,7 +88,9 @@ You have to create a string separated by commas, these strings are retrieved fro
 ### private fun snackBar()
  Show the user an error message when loading the products
  
- ##Detail Activity
+ 
+ 
+ #Detail Activity
 
 ### private fun renderItem()
 Bind the item data with the xml
