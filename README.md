@@ -53,19 +53,19 @@ You have to create a string separated by commas, these strings are retrieved fro
 ## Usage
 
 ### Main Activity
-###### It has a searView in which entering any product you want to buy,
-A recyclerView will be displayed with the 20 most searched products on the free market page.
-Then you can click on any object and another Activity will be displayed
-You can also click on the cart, which will display the favorite activity
+##### It has a searView in which entering any product you want to buy,
+##### A recyclerView will be displayed with the 20 most searched products on the free market page.
+##### Then you can click on any object and another Activity will be displayed
+##### You can also click on the cart, which will display the favorite activity
 
 
 ### Detail Activity
-###### After clicking, this Activity will be displayed, where it will show details of the selected product
-such as, photo, price, title, subtitle, description.
-You will also have the option to add said product to favorites
+##### After clicking, this Activity will be displayed, where it will show details of the selected product
+##### such as, photo, price, title, subtitle, description.
+##### You will also have the option to add said product to favorites
 
 
 ### favorite Activity
-###### This activity will show details of the last product added to favorites
+##### This activity will show details of the last product added to favorites
 
 
