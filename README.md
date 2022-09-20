@@ -20,8 +20,8 @@ Retrieves a category according to the query you send by parameter
 | `limit` | `string` | **Required**. Your API key |
 
 #### Get highlights
-Recupera una lista de highlight
-@parameters categoryId : Es el category_id recuperado de getCategory
+Retrieve a list of highlights
+@parameters categoryId : Is the category_id retrieved from getCategory
 ```http
   GET "highlights/MLA/category/{categoryId}"
 ```
