@@ -64,3 +64,21 @@ You have to create a string separated by commas, these strings are retrieved fro
 ##### This activity will show details of the last product added to favorites
 
 
+## Features
+
+###Main Activity
+#### Allows you to enter a query for , which will be sent to getCategories of the ItemViewModel
+ private fun setSearchViewListener()
+#### Assign the adapter, send the Activity context and a list of items to be rendered, also add a decoration item to separate the products
+  private fun initRecyclerView()
+
+#### through the ItemViewModel, the oberserver pattern will be used, to see changes in the list, if it is null or empty it will show a snack bar notifying the user, in the case that it contains information, the adapter will be notified of the changes that have arisen on the list
+private fun setupObservers()
+
+#### Bind the image and with one click navigate to the favorite Activity
+ private fun onClickFav()
+
+#### Show the user an error message when loading the products
+ private fun snackBar()
+
+
