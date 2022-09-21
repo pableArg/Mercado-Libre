@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintBar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="90dp"
         android:background="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,6 +68,26 @@
             app:layout_constraintStart_toEndOf="@+id/imgBack"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.48" />
+
+        <ImageButton
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/ic_baseline_location_on_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSendTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/location"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvLocation" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -138,7 +158,7 @@
             app:layout_constraintVertical_bias="0.051" />
 
         <Button
-            android:layout_width="177dp"
+            android:layout_width="170dp"
             android:layout_height="60dp"
             android:text="@string/whats"
             android:theme="@style/buttonStyle"
@@ -152,18 +172,17 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButton"
-            android:layout_width="182dp"
-            android:layout_height="61dp"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
             android:text="@string/preguntar"
             android:theme="@style/buttonStyle"
-
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.08"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.29" />
+            app:layout_constraintVertical_bias="0.297" />
 
         <TextView
             android:id="@+id/txtCompartir"
@@ -171,7 +190,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/compartir"
-            app:layout_constraintBottom_toTopOf="@+id/txtDescription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.749"
             app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +202,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/agregarAFavoritos"
-            app:layout_constraintBottom_toTopOf="@+id/txtDescription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toStartOf="parent"

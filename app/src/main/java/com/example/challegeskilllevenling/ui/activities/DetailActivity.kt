@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
 import android.os.Bundle
+import android.provider.SyncStateContract.Helpers.insert
 import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -42,9 +43,6 @@ class DetailActivity : AppCompatActivity() {
     }
 
 
-
-
-
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun onClickFav() {
         binding.txtFavorite.setOnClickListener {
@@ -60,15 +58,18 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-
-
+    /**
+     * save object  id
+     * */
     private fun insert() {
         CoroutineScope(Dispatchers.IO).launch {
             getItem()?.body?.let {
-                saveValues(
-                    getItem()?.body?.id ?: binding.txtTitle.text.toString()
+                getItem()?.body?.id?.let { it1 ->
+                    saveValues(
+                        it1
 
-                )
+                    )
+                }
             }
         }
     }
@@ -78,19 +79,26 @@ class DetailActivity : AppCompatActivity() {
             deleteValues()
         }
     }
-
+/**
+ * save information the object  in format key - value
+ * */
     private suspend fun saveValues(id: String) {
         dataStore.edit { preference ->
             preference[stringPreferencesKey("id")] = id
         }
     }
-
+        /**
+         * delete
+         * */
     private suspend fun deleteValues() {
         dataStore.edit { preference ->
             preference.clear()
         }
     }
 
+    /**
+     *bind the object sent from the ItemAdapter with the xml
+     * */
     @SuppressLint("SetTextI18n")
     private fun renderItem() {
         val item = getItem()
@@ -102,11 +110,16 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * receives the object sent from the adapter
+     * */
     private fun getItem(): ItemResponse? {
         return intent.getParcelableExtra("item_data")
     }
 
-
+    /**
+     * return to main activity
+     * */
     private fun navigateToHome() {
         binding.imgBack.setOnClickListener {
             val intent =

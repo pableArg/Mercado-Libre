@@ -22,4 +22,5 @@
     <string name="compartir">Compartir</string>
     <string name="description">Descripcion</string>
     <string name="errorText">Error al cargar los Items</string>
+    <string name="location">Enviar a nombre de usuario - Direccion</string>
 </resources>

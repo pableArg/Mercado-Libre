@@ -10,9 +10,9 @@ class ApiClient @Inject constructor(
 ) {
     val status = MutableLiveData<ApiStatus>()
 
-    /*Hits the getCategory endpoint, iterates over the first position and
+    /**Hits the getCategory endpoint, iterates over the first position and
     * retrieves the categoryId and passes it to getHighLight
-    *  */
+     */
     suspend fun getCategories(q: String): List<ItemResponse> {
         val response = api.getCategory(q)
         var categoryId = ""
@@ -28,7 +28,7 @@ class ApiClient @Inject constructor(
     }
 
 
-/*
+/**
     Hits the getHighlight endpoint,
     iterates through the content and retrieves the comma-separated ids and passes them to getItems
 */
@@ -47,9 +47,9 @@ class ApiClient @Inject constructor(
         }
         return getItems(idsHighlight)
     }
-/*
-* returns the 20 most popular items on the platform
-* */
+/**
+ returns the 20 most popular items on the platform
+ */
     suspend fun getItems(ids: String): List<ItemResponse> {
         return api.getItems(ids)
     }

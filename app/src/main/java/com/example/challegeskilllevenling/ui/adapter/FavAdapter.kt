@@ -29,7 +29,9 @@ class FavAdapter @Inject constructor(
 
 }
 class FavViewHolder(private val binding: ItemCardBinding) : RecyclerView.ViewHolder(binding.root) {
-
+/**
+ * For each item binding the xml with the item information
+  */
     @SuppressLint("SetTextI18n")
     fun onBind(item: Item) {
         Picasso.get().load(item.imagen).into(binding.imageView)

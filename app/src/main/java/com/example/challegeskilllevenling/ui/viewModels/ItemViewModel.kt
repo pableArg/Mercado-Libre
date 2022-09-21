@@ -20,13 +20,16 @@ class ItemViewModel @Inject constructor(
     val searchItem = MutableLiveData<List<ItemResponse>?>()
     val status = MutableLiveData<ApiStatus>()
 
-
+/**
+ * call getcategories and the response fills the searchitem list and api status is success
+ * if response is empty , api status is failure and searchitem is empty
+ * */
     fun getCategories(query: String) {
         status.value = ApiStatus.LOADING
         viewModelScope.launch {
             try {
                 val response = repository.getCategories(query)
-                if (response.isNullOrEmpty()) {
+                if (response.isEmpty()) {
                     status.value = ApiStatus.FAILURE
                     searchItem.value  = emptyList()
                 } else {

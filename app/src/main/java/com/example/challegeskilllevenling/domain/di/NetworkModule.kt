@@ -16,8 +16,9 @@ import javax.inject.Singleton
 object NetworkModule {
 
     private const val BASE_URL = "https://api.mercadolibre.com/"
-    private const val DATA_BASE_NAME = "data_base"
-
+/**
+provides a single retrofit instance
+ * */
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {
@@ -26,7 +27,9 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-
+    /**
+    provides a single api interface  instance
+     * */
     @Singleton
     @Provides
     fun provideMercadoApi(retrofit: Retrofit): MercadoApi {

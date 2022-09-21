@@ -36,9 +36,10 @@ class MainActivity : AppCompatActivity() {
         setSearchViewListener()
         initRecyclerView()
         setupObservers()
-        onClickFav()
 
     }
+/**
+ * through a query call getCategories viewModel*/
 
     private fun setSearchViewListener() {
         try {
@@ -61,7 +62,10 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
+/**
+ * starts recyclerview sending the list loaded by the observer , also puts a decoration
+ * between the lines
+ * */
     private fun initRecyclerView() {
         val manager = LinearLayoutManager(this)
         val decoration = DividerItemDecoration(this,manager.orientation)
@@ -71,6 +75,11 @@ class MainActivity : AppCompatActivity() {
         binding.rv.addItemDecoration(decoration)
     }
 
+    /**
+     *watch for changes to the list that loads the viewmodel .
+     * If this list is empty , it will show a snacbar , instead if it has information ,
+     * it will fill the list that is passed to the adapter and notify it
+     * */
     @SuppressLint("NotifyDataSetChanged")
     private fun setupObservers() {
         viewModel.searchItem.observe(this) {
@@ -82,16 +91,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    private fun onClickFav(){
-        binding.imFav.setOnClickListener {
-            val intent = Intent (applicationContext, FavActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
-
-
     private fun snackBar() {
         Snackbar.make(binding.activityConstraint,"Error al cargar los Items" , Snackbar.LENGTH_LONG).show()
     }
