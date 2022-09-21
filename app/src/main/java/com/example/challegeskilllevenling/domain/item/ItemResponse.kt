@@ -1,3 +1,7 @@
 package com.example.challegeskilllevenling.domain.item
 
-data class  ItemResponse(var body : Item)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class  ItemResponse(var body : Item) : Parcelable

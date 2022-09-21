@@ -9,9 +9,9 @@ data class Item (
     var id : String,
     @SerializedName("title")
     var titulo : String,
+    var descriptions: List<String>,
     @SerializedName("price")
     var precio : Double,
     @SerializedName("thumbnail")
-    var imagen : String
-
+    var imagen : String,
         ) : Parcelable

@@ -1,6 +1,7 @@
 package com.example.challegeskilllevenling.domain.di
 
-import com.example.challegeskilllevenling.data.MercadoApi
+
+import com.example.challegeskilllevenling.data.database.service.MercadoApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,6 +16,7 @@ import javax.inject.Singleton
 object NetworkModule {
 
     private const val BASE_URL = "https://api.mercadolibre.com/"
+    private const val DATA_BASE_NAME = "data_base"
 
     @Singleton
     @Provides

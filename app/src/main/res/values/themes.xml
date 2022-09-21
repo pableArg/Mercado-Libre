@@ -15,7 +15,7 @@
     </style>
 
     <style name="Theme.ChallegeSkillLevenling.NoActionBar">
-        <item name="windowActionBar">false</item>
+        <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
     </style>
 
@@ -25,27 +25,27 @@
 
 
     <style name="titleStyle" parent="">
-    <item name="android:textSize">18sp</item>
-    <item name="android:textStyle"> normal</item>
-    <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="cityStyle" parent="">
         <item name="android:textSize">12sp</item>
-        <item name="android:textStyle"> normal</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
 
     <style name="priceStyle" parent="">
         <item name="android:textSize">35sp</item>
-        <item name="android:textStyle"> normal</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="priceStyleCard" parent="">
         <item name="android:textSize">24sp</item>
-        <item name="android:textStyle"> normal</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
@@ -54,5 +54,20 @@
         <item name="android:radius">30dp</item>
 
     </style>
+
+    <style name="agregarAFavoritos" parent="">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="descriptionStyle" parent="">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:text">@string/description</item>
+
+    </style>
+
 
 </resources>

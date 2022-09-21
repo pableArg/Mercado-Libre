@@ -14,4 +14,12 @@
     <string name="subTitle">VolskWagen Fox 1.6 Connect</string>
     <string name="price">$2.200.200</string>
     <string name="city">Bs. As. G.B.A Norte</string>
+    <string name="preguntar">Preguntar</string>
+    <string name="whats">Whatsapp</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_activity_fav">FavActivity</string>
+    <string name="agregarAFavoritos">Agregar a favoritos</string>
+    <string name="compartir">Compartir</string>
+    <string name="description">Descripcion</string>
+    <string name="errorText">Error al cargar los Items</string>
 </resources>
