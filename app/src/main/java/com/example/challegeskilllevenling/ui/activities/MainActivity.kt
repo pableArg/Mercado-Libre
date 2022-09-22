@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity() {
     private val itemList = mutableListOf<ItemResponse>()
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -36,10 +34,12 @@ class MainActivity : AppCompatActivity() {
         setSearchViewListener()
         initRecyclerView()
         setupObservers()
+        navigateToFav()
 
     }
-/**
- * through a query call getCategories viewModel*/
+
+    /**
+     * through a query call getCategories viewModel*/
 
     private fun setSearchViewListener() {
         try {
@@ -58,19 +58,20 @@ class MainActivity : AppCompatActivity() {
                     }
                 })
         } catch (e: Exception) {
-           snackBar()
+            snackBar()
         }
 
     }
-/**
- * starts recyclerview sending the list loaded by the observer , also puts a decoration
- * between the lines
- * */
+
+    /**
+     * starts recyclerview sending the list loaded by the observer , also puts a decoration
+     * between the lines
+     * */
     private fun initRecyclerView() {
         val manager = LinearLayoutManager(this)
-        val decoration = DividerItemDecoration(this,manager.orientation)
+        val decoration = DividerItemDecoration(this, manager.orientation)
         binding.rv.layoutManager = manager
-        adapter = ItemAdapter(applicationContext,itemList)
+        adapter = ItemAdapter(applicationContext, itemList)
         binding.rv.adapter = adapter
         binding.rv.addItemDecoration(decoration)
     }
@@ -85,14 +86,24 @@ class MainActivity : AppCompatActivity() {
         viewModel.searchItem.observe(this) {
             if (it.isNullOrEmpty()) {
                 snackBar()
-            }else {
+            } else {
                 adapter.itemList = it
                 adapter.notifyDataSetChanged()
             }
         }
     }
+
     private fun snackBar() {
-        Snackbar.make(binding.activityConstraint,"Error al cargar los Items" , Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.activityConstraint, "Error al cargar los Items", Snackbar.LENGTH_LONG)
+            .show()
+    }
+
+    private fun navigateToFav() {
+        binding.imFav.setOnClickListener {
+            val intent =
+                Intent(this, FavActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

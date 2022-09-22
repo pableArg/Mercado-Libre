@@ -12,7 +12,7 @@ interface MercadoApi {
 
     companion object {
         const val SITE_ID = "MLA"
-        const val TOKEN_MELI = "APP_USR-7659498699499354-092111-09610ca4932e755ce27e666ec7313d75-141318486"
+        const val TOKEN_MELI = "APP_USR-7659498699499354-092120-2267bce3aefa261b1c0ff93bbd887217-141318486"
     }
 
     @Headers("Authorization: Bearer $TOKEN_MELI")

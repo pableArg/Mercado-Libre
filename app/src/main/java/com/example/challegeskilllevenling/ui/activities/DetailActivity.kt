@@ -4,9 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.provider.SyncStateContract.Helpers.get
 import android.provider.SyncStateContract.Helpers.insert
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -27,74 +31,73 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     private val list = mutableListOf<String>()
 
-
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         renderItem()
         navigateToHome()
-        onClickFav()
+        getItem()?.body?.id?.let { onClickFav(it) }
 
 
     }
 
-
+        /**
+         *
+        if the id of the item is found in the list the heart is painted red, otherwise it fades
+         * */
     @SuppressLint("UseCompatLoadingForDrawables")
-    private fun onClickFav() {
+    private fun onClickFav(id: String) {
         binding.txtFavorite.setOnClickListener {
-            if (!list.contains(getItem()?.body?.id)) {
-                list.add(it.id.toString())
-                insert()
-                binding.imgFav.background = getDrawable(R.drawable.ic_fav_pressed)
+            drawable()
+            if (list.contains(id)) {
+                deleteItem(id)
             } else {
-                list.remove(it.id.toString())
-                binding.imgFav.background = getDrawable(R.drawable.ic_fav_default)
-                delete()
+                insert(id)
+
             }
         }
+
+    }
+
+    private fun deleteItem(id: String) {
+        list.remove(id)
     }
 
     /**
      * save object  id
      * */
-    private fun insert() {
+    private fun insert(id: String) {
+        list.add(id)
         CoroutineScope(Dispatchers.IO).launch {
-            getItem()?.body?.let {
-                getItem()?.body?.id?.let { it1 ->
-                    saveValues(
-                        it1
+            getItem()?.body.let {
+                it?.let { it1 -> list.add(it1.id) }
+                saveValues(
+                    it?.id.toString(),
+                    binding.txtTitle.text.toString(),
+                    binding.txtPrice.text.toString()
+                )
 
-                    )
-                }
             }
         }
     }
 
-    private fun delete() {
-        CoroutineScope(Dispatchers.IO).launch {
-            deleteValues()
-        }
-    }
-/**
- * save information the object  in format key - value
- * */
-    private suspend fun saveValues(id: String) {
+
+    /**
+     * save information the object  in format key - value
+     * */
+    private suspend fun saveValues(id: String, title: String, price: String) {
         dataStore.edit { preference ->
             preference[stringPreferencesKey("id")] = id
+            preference[stringPreferencesKey("title")] = title
+            preference[stringPreferencesKey("price")] = price
+
         }
     }
-        /**
-         * delete
-         * */
-    private suspend fun deleteValues() {
-        dataStore.edit { preference ->
-            preference.clear()
-        }
-    }
+
 
     /**
      *bind the object sent from the ItemAdapter with the xml
@@ -126,6 +129,18 @@ class DetailActivity : AppCompatActivity() {
                 Intent(this, MainActivity::class.java).addFlags(FLAG_ACTIVITY_REORDER_TO_FRONT)
             startActivity(intent)
         }
+    }
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun drawable() {
+        getItem()?.body.let {
+            if (list.contains(it?.id)) {
+                binding.imgFav.background = getDrawable(R.drawable.ic_fav_pressed)
+            } else {
+                binding.imgFav.background = getDrawable(R.drawable.ic_fav_default)
+
+            }
+        }
+
     }
 
 

@@ -61,7 +61,6 @@ class ApiClientTest {
 
     //Api Status
     private fun statusSuccess(): ApiStatus = ApiStatus.SUCCESS
-    private fun statusError(): ApiStatus = ApiStatus.FAILURE
 
     private fun itemResponseList(): List<ItemResponse> = listOf(ItemResponse(body))
     private val body: Item = Item("1", "Item", listString(), 100.0, "image")
