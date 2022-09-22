@@ -64,55 +64,6 @@ You have to create a string separated by commas, these strings are retrieved fro
 ##### This activity will show details of the last product added to favorites
 
 
-# Features
-
-#Main Activity
-
- ### private fun setSearchViewListener()
- Allows you to enter a query for , which will be sent to getCategories of the ItemViewModel
-
- 
- ### private fun initRecyclerView()
- Assign the adapter, send the Activity context and a list of items to be rendered, also add a decoration item to separate the products
-
-
-### private fun setupObservers()
-
- through the ItemViewModel, the oberserver pattern will be used, to see changes in the list, if it is null or empty it will show a snack bar notifying the user, in the case that it contains information, the adapter will be notified of the changes that have arisen on the list
-
-
- ### private fun onClickFav()
- Bind the image and with one click navigate to the favorite Activity
-
-
-### private fun snackBar()
- Show the user an error message when loading the products
- 
- 
- 
- #Detail Activity
-
-### private fun renderItem()
-Bind the item data with the xml
-
-### private fun getItem()
-Receive the object sent in the ItemAdapter
-
-### private fun navigateToHome()
-Clicking on imgBack , returns to the Main Activity
-
-
-### private fun onClickFav()
-When clicking on imgFav , if the ID of the object is not found in a list of strings, it calls the insert() function and paints the heart red, instead if it is found, delete() is called and paints unpaints the heart
-
-### private fun insert()
-Save the values ​​of the object
-
-### private suspend fun saveValues(title: String, price: String, image: String)
-Save the data of the object through the DataStore to be sent to the Favorites Activity
-
-### private suspend fun deleteValues()
-Deletes the values ​​of the object saved in the Data Store
 
 
 
